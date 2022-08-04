@@ -44,7 +44,7 @@ public class TestAssignment {
 		int statusCode= response.getStatusCode();
 		Assert.assertEquals(statusCode, 200);
 		// creates a toggle for the given test, adds all log events under it    
-        ExtentTest test = extent.createTest("MyFirstTest", "Sample description");
+        ExtentTest test = extent.createTest("Test case_001", "This test case verify the response status code and content type");
 
         // log(Status, details)
         test.log(Status.INFO, "This step shows usage of log(status, details)");
@@ -53,7 +53,7 @@ public class TestAssignment {
         test.info("This step shows usage of info(details)");
         
         // log with snapshot
-        test.fail("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
+        test.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
         
         // test with snapshot
         test.addScreenCaptureFromPath("screenshot.png");
@@ -61,13 +61,27 @@ public class TestAssignment {
 
 	}
 	@Test
-	public void testcase_002() {
+	public void testcase_002() throws IOException {
 		baseURI="https://api.tmsandbox.co.nz/v1";
 		given().
 		get("/Categories/6327/Details.json?catalogue=false").
 		then().
 		statusCode(200).
 		body("Name", equalTo("Carbon credits"));
+		
+		 ExtentTest test = extent.createTest("Test case_002", "This test case verify the Name =Carbon credits");
+
+	        // log(Status, details)
+	        test.log(Status.INFO, "This step shows usage of log(status, details)");
+
+	        // info(details)
+	        test.info("This step shows usage of info(details)");
+	        
+	        // log with snapshot
+	        test.pass("details", MediaEntityBuilder.createScreenCaptureFromPath("screenshot.png").build());
+	        
+	        // test with snapshot
+	        test.addScreenCaptureFromPath("screenshot.png");
 
 
 	}
