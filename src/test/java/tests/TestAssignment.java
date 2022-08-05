@@ -18,7 +18,8 @@ public class TestAssignment {
 
 	@BeforeTest
 	public  void getproperties() throws IOException {
-		FileInputStream input= new FileInputStream("C:/Users/dvk/eclipse-workspace/RestAssuredAutomation/src/test/java/config/config.properties");
+		
+		FileInputStream input= new FileInputStream("src/test/java/config/config.properties");
 		
 		prop.load(input);
 		base=prop.getProperty("BaseURI");
